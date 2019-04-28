@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -12,6 +13,8 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->middleware('roles:admin');
     }
     /**
      * Display a listing of the resource.
@@ -33,6 +36,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        request()->user()->authorizeRoles('admin');
 
         return view('users.create');
     }
@@ -64,6 +68,7 @@ class UsersController extends Controller
         }
         $user->avatar = $avatar;
         $user->save();
+        $user->roles()->attach(Role::where('role', 'user')->first());
 
         return redirect()->route('users.index');
     }
@@ -124,6 +129,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $user->roles()->detach(Role::where('role', 'user')->first());
         $user->delete();
 
         return redirect()->route('users.index');

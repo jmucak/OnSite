@@ -16,7 +16,9 @@
 
                     You are logged in!
 
-                    <a href="{{ route('users.index') }}" class="btn btn-warning">Get me users</a>
+                    @if(auth()->user()->isAdmin())
+                        <a href="{{ route('users.index') }}" class="btn btn-warning">Get me users</a>
+                    @endif
                 </div>
             </div>
         </div>

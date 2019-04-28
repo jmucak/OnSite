@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,6 +79,8 @@ class RegisterController extends Controller
             'slug' => str_slug($data['name']),
             'avatar' => $avatar
         ]);
+
+        $user->roles()->attach(Role::where('role', 'user')->first());
 
         return $user;
     }

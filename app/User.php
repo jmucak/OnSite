@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use App\Traits\RoleValidation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class User extends Authenticatable
 {
     use Notifiable;
+    use RoleValidation;
 
     /**
      * The attributes that are mass assignable.
@@ -42,4 +44,12 @@ class User extends Authenticatable
 
         return asset(Storage::url($avatar));
     }
+
+    // Roles relation
+    public function roles() {
+
+        return $this->belongsToMany(Role::class, 'user_role');
+    }
+
+    
 }
