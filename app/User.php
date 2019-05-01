@@ -51,8 +51,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'user_role');
     }
 
+    // Profile relationship
     public function profile() {
 
         return $this->hasOne(Profile::class);
+    }
+
+    // Story relationship
+    public function stories() {
+        return $this->hasMany(Story::class);
     }
 }

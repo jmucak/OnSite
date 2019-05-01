@@ -19,6 +19,8 @@
                     @if(auth()->user()->isAdmin())
                         <a href="{{ route('users.index') }}" class="btn btn-warning">Get me users</a>
                     @endif
+
+                    <a href="{{ route('stories.index') }}" class="btn btn-success">Story</a>
                 </div>
             </div>
         </div>

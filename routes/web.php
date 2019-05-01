@@ -26,3 +26,7 @@ Route::resource('users', 'UsersController');
 Route::get('/profile/{slug}', 'ProfileController@index')->name('profile');
 Route::get('/profile/edit/profile', 'ProfileController@edit')->name('profile.edit');
 Route::post('/profile/update/profile', 'ProfileController@update')->name('profile.update');
+
+// Story
+Route::resource('stories', 'StoryController');
+
