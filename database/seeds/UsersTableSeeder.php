@@ -38,56 +38,32 @@ class UsersTableSeeder extends Seeder
         $profile->lastname = $admin->name;
         $profile->save();
 
-        // User1
-        $user1 = new User();
-        $user1->gender = rand(0,1);
+        for($i=2; $i<12; $i++){
+            // Create 10 users
+            ${"user$i"} = new User();
+            ${"user$i"}->gender = rand(0,1);
 
-        if($user1->gender) {
-            $avatar = 'public/defaults/avatars/male.png';
-        } else {
-            $avatar = 'public/defaults/avatars/female.png';
+            if(${"user$i"}->gender) {
+                $avatar = 'public/defaults/avatars/male.png';
+            } else {
+                $avatar = 'public/defaults/avatars/female.png';
+            }
+
+            ${"user$i"}->name = "user$i";
+            ${"user$i"}->email = "user$i@onsite.com";
+            ${"user$i"}->password = bcrypt('password');
+            ${"user$i"}->avatar = $avatar;
+            ${"user$i"}->slug = str_slug(${"user$i"}->name);
+
+            ${"user$i"}->save();
+            ${"user$i"}->roles()->attach(2);
+
+            ${"profile$i"} = new Profile();
+            ${"profile$i"}->user_id = $i;
+            ${"profile$i"}->firstname = ${"user$i"}->name;
+            ${"profile$i"}->lastname = ${"user$i"}->name;
+
+            ${"profile$i"}->save();
         }
-
-        $user1->name = 'user1';
-        $user1->email = 'user1@onsite.com';
-        $user1->password = bcrypt('password');
-        $user1->avatar = $avatar;
-        $user1->slug = str_slug($user1->name);
-
-        $user1->save();
-        $user1->roles()->attach(2);
-
-        $profile1 = new Profile();
-        $profile1->user_id = 2;
-        $profile1->firstname = $user1->name;
-        $profile1->lastname = $user1->name;
-
-        $profile1->save();
-
-        // User 2
-        $user2 = new User();
-        $user2->gender = rand(0,1);
-
-        if($user2->gender) {
-            $avatar = 'public/defaults/avatars/male.png';
-        } else {
-            $avatar = 'public/defaults/avatars/female.png';
-        }
-
-        $user2->name = 'user2';
-        $user2->email = 'user2@onsite.com';
-        $user2->password = bcrypt('password');
-        $user2->avatar = $avatar;
-        $user2->slug = str_slug($user2->name);
-
-        $user2->save();
-        $user2->roles()->attach(2);
-
-        $profile2 = new Profile();
-        $profile2->user_id = 3;
-        $profile2->firstname = $user2->name;
-        $profile2->lastname = $user2->name;
-
-        $profile2->save();
     }
 }
