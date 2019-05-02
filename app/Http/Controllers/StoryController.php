@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Story;
+use App\Helpers\Slug;
 use Illuminate\Http\Request;
 
 class StoryController extends Controller
@@ -46,10 +47,12 @@ class StoryController extends Controller
             'description' => 'required|min:3'
         ]);
 
-        $story = Story::create([
+        $slug = new Slug();
+
+        Story::create([
             'title' => request('title'),
             'description' => request('description'),
-            'slug' => request(str_slug(request('title'))),
+            'slug' => $slug->createSlug(request('title')),
             'user_id' => auth()->id()
         ]);
 
@@ -62,13 +65,16 @@ class StoryController extends Controller
      * @param  \App\Story  $story
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $story = Story::find($id);
 
-        
+        $story = Story::where([
+            'user_id' => auth()->id(),
+            'slug' => $slug
+        ])->get()->first();
 
-        return view('stories.show', compact('story'));
+
+        return view('stories.show', compact('slug', 'story'));
     }
 
     /**
@@ -77,9 +83,12 @@ class StoryController extends Controller
      * @param  \App\Story  $story
      * @return \Illuminate\Http\Response
      */
-    public function edit(Story $story)
+    public function edit($slug)
     {
-        //
+        
+        $story = Story::where('slug', $slug)->get()->first();
+   
+        return view('stories.edit', compact('story'));
     }
 
     /**
@@ -89,9 +98,20 @@ class StoryController extends Controller
      * @param  \App\Story  $story
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Story $story)
+    public function update(Request $request, $slug)
     {
-        //
+
+        $story = Story::where('slug', $slug)->get()->first();
+        
+        $story->title = $request->title;
+        $story->description = $request->description;
+        $story->slug = str_slug($request->title);
+        $story->user_id = auth()->id();
+
+        $story->save();
+
+        return redirect()->route('stories.index');
+       
     }
 
     /**
@@ -100,8 +120,11 @@ class StoryController extends Controller
      * @param  \App\Story  $story
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Story $story)
+    public function destroy($slug)
     {
-        //
+        $story = Story::where('slug', $slug)->get()->first();
+        $story->delete();
+
+        return redirect()->route('stories.index');
     }
 }

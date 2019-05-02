@@ -29,4 +29,3 @@ Route::post('/profile/update/profile', 'ProfileController@update')->name('profil
 
 // Story
 Route::resource('stories', 'StoryController');
-

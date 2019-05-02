@@ -18,9 +18,12 @@ class CreateStoriesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
+            $table->boolean('published')->default(0);
             $table->integer('user_id');
             $table->timestamps();
         });
+
+        //DB::update("ALTER TABLE stories AUTO_INCREMENT = 1000;");
     }
 
     /**

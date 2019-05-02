@@ -10,7 +10,7 @@
 
                     <div class="card-body">
                         @foreach($stories as $story)
-                            <h2><a href="{{ route('stories.show', $story->id) }}">{{ $story->title }}</a></h2>
+                            <h2><a href="{{ route('stories.show', ['slug' => $story->slug]) }}">{{ $story->title }}</a></h2>
                             <p>{{ $story->description }}</p>
                             <hr>
                         @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use App\User;
+use App\Story;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,13 @@ class ProfileController extends Controller
     public function index($slug)
     {
         $user = User::where('slug', $slug)->first();
+        $stories = Story::where([
+            'user_id'=> $user->id,
+            'published' => true
+        ])->get();
 
-        return view('profiles.index', compact('user'));
+
+        return view('profiles.index', compact('user', 'stories'));
     }
 
     /**
@@ -101,16 +107,5 @@ class ProfileController extends Controller
         return redirect()->back();
 
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Profile $profile)
-    {
-        //
     }
 }

@@ -32,6 +32,26 @@
             </div>
         @endif
 
+        @if(!$stories->isEmpty())
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>My Stories</h3>
+                        </div>
+        
+                        <div class="card-body">
+                            @foreach($stories as $story)
+                                <h2>{{ $story->title }}</h2>
+                                <p>{{ $story->description }}</p>
+                                <hr>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <br><hr>
         @if(Auth::id() == $user->id)
             <a href="{{ route('profile.edit') }}" class="btn btn-large btn-success">Edit my profile</a>
