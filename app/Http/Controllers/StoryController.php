@@ -123,6 +123,10 @@ class StoryController extends Controller
     public function destroy($slug)
     {
         $story = Story::where('slug', $slug)->get()->first();
+
+        foreach ($story->chapters as $chapter) {
+            $chapter->delete();
+        }
         $story->delete();
 
         return redirect()->route('stories.index');

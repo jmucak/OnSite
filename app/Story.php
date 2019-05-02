@@ -16,4 +16,8 @@ class Story extends Model
     public function getRouteKeyName() {
         return 'slug';
     }
+
+    public function chapters() {
+        return $this->hasMany(Chapter::class);
+    }
 }

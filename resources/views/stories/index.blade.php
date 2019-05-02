@@ -12,6 +12,7 @@
                         @foreach($stories as $story)
                             <h2><a href="{{ route('stories.show', ['slug' => $story->slug]) }}">{{ $story->title }}</a></h2>
                             <p>{{ $story->description }}</p>
+                            <a href="{{ route('chapter.create', $story->slug) }}" class="btn btn-sm btn-primary">Add Some chapters</a>
                             <hr>
                         @endforeach
                     </div>

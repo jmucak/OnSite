@@ -29,3 +29,10 @@ Route::post('/profile/update/profile', 'ProfileController@update')->name('profil
 
 // Story
 Route::resource('stories', 'StoryController');
+
+// Chapter
+Route::get('/stories/{slug}/create/chapter', 'ChapterController@create')->name('chapter.create');
+Route::post('/stories/{slug}/chapter/{id}', 'ChapterController@store')->name('chapter.store');
+Route::get('/stories/chapter/edit/{id}', 'ChapterController@edit')->name('chapter.edit');
+Route::patch('/stories/chapter/{id}', 'ChapterController@update')->name('chapter.update');
+Route::delete('/stories/chapter/{id}', 'ChapterController@destroy')->name('chapter.destroy');

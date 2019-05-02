@@ -129,6 +129,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $user->profile->delete();
         $user->roles()->detach(Role::where('role', 'user')->first());
         $user->delete();
 
