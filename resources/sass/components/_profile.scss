@@ -1,0 +1,29 @@
+.onsite-profile {
+    position: relative;
+
+    &__banner {
+        width: 100%;
+        background-color: $primary-light;
+    }
+
+    &__img {
+        border-radius: 50%;
+        margin-left: 5rem;
+    }
+
+    &__addFriend {
+        position: absolute;
+        top: 1.2rem;
+        right: 7rem;
+    }
+
+    &__info {
+        margin: 3rem;
+    }
+}
+
+.btn-onsite-success {
+    color: #fff!important;
+    background-color: $primary!important;
+    border-color: $primary!important;
+}

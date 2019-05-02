@@ -4,6 +4,11 @@
 <div class="onsite-profile">
     <div class="onsite-profile__banner">
         <img src="{{ $user->avatar }}" width="70px" height="70px" class="onsite-profile__img" alt="{{ $user->name }}">
+        <div class="onsite-profile__addFriend">
+            @if(Auth::id() !== $user->id )
+                <friend :profile_user_id="{{ $user->id }}"></friend>
+            @endif
+        </div>
     </div>
     
     <div class="onsite-profile__info">

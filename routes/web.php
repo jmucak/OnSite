@@ -36,3 +36,8 @@ Route::post('/stories/{slug}/chapter/{id}', 'ChapterController@store')->name('ch
 Route::get('/stories/chapter/edit/{id}', 'ChapterController@edit')->name('chapter.edit');
 Route::patch('/stories/chapter/{id}', 'ChapterController@update')->name('chapter.update');
 Route::delete('/stories/chapter/{id}', 'ChapterController@destroy')->name('chapter.destroy');
+
+// Friendship
+Route::get('/check_relationship_status/{id}', 'FriendshipController@check')->name('check');
+Route::get('/add_friend/{id}', 'FriendshipController@add_friend')->name('add_friend');
+Route::get('/accept_friend/{id}', 'FriendshipController@accept_friend')->name('accept_friend');

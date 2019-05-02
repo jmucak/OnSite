@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use App\Traits\RoleValidation;
+use App\Traits\Friendable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class User extends Authenticatable
 {
     use Notifiable;
+    use Friendable;
     use RoleValidation;
 
     /**
