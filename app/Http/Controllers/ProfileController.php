@@ -28,8 +28,9 @@ class ProfileController extends Controller
             'published' => true
         ])->get();
 
+        $friends = Auth::user()->friends();
 
-        return view('profiles.index', compact('user', 'stories'));
+        return view('profiles.index', compact('user', 'stories', 'friends'));
     }
 
     /**
@@ -91,7 +92,7 @@ class ProfileController extends Controller
         ]);
 
         // update auth user profile data
-        $user = Auth::user()->profile()->update([
+        Auth::user()->profile()->update([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'about' => $request->about
@@ -105,7 +106,5 @@ class ProfileController extends Controller
 
         // redirect back
         return redirect()->back();
-
-
     }
 }

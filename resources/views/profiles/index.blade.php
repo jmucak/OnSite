@@ -60,6 +60,16 @@
         <br><hr>
         @if(Auth::id() == $user->id)
             <a href="{{ route('profile.edit') }}" class="btn btn-large btn-success">Edit my profile</a>
+
+            @if(!empty($friends))
+            <hr>
+            List of my friends
+            <ul>
+            @foreach($friends as $friend)
+                <li><a href="{{ route('profile', $friend->slug) }}">{{$friend->name}}</a></li>
+            @endforeach
+        </ul>
+        @endif
         @endif
     </div>
 </div>
