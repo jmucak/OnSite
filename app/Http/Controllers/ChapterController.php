@@ -42,11 +42,11 @@ class ChapterController extends Controller
      */
     public function store($slug, $id)
     {
-        /*validate()->request([
+        request()->validate([
             'title' => 'required|min:2',
             'content' => 'required|min:2'
         ]);
-*/
+
         Chapter::create([
             'title' => request('title'),
             'content' => request('content'),
@@ -54,7 +54,7 @@ class ChapterController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return redirect()->back();
+        return redirect()->route('stories.show', $slug);
     }
 
     /**

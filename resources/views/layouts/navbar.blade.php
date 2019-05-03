@@ -9,8 +9,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto ml-auto">
-       
+            <ul class="navbar-nav">
+                @auth
+                    <li class="nav-item onsite-link">
+                        <a href="{{ route('friends') }}">My friends</a>
+                    </li>
+                    <li class="nav-item onsite-link">
+                        <a href="{{ route('stories.index') }}">My stories</a>
+                    </li>
+                @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -44,7 +51,7 @@
                     
                 @else
                     <li class="nav-item onsite-link">
-                        <a class="onsite-link" href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">
+                        <a href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">
                             <img src="{{ Auth::user()->avatar }}" width="30px" height="30px" alt="{{ Auth::user()->name }}">
                             {{ Auth::user()->name }} 
                         </a>
@@ -57,6 +64,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @auth
                                 <a class="dropdown-item" href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">My Profile</a>
+                                <a href="{{ route('stories.index') }}" class="dropdown-item">My stories</a>
                             @endauth
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

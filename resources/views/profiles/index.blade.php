@@ -68,8 +68,8 @@
             @foreach($friends as $friend)
                 <li><a href="{{ route('profile', $friend->slug) }}">{{$friend->name}}</a></li>
             @endforeach
-        </ul>
-        @endif
+            </ul>
+            @endif
         @endif
     </div>
 </div>

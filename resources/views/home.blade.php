@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-8 offset-1">
             <div class="card">
                 <div class="card-header">Welcome {{ auth()->user()->name }} </div>
 
@@ -17,22 +16,22 @@
                     @if(auth()->user()->isAdmin())
                         <a href="{{ route('users.index') }}" class="btn btn-warning">Get me users</a>
                     @endif
-
-                    <a href="{{ route('stories.index') }}" class="btn btn-success">Create a story</a>
+                    
+                    <a href="{{ route('stories.create') }}" class="btn btn-success" role="button">Create a Story</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-8 offset-1">
+            <br>
+            <h2>News Feed</h2>
+            <br>
             <feed></feed>
         </div>
-        <div class="col-lg-2">
+        <div class="col-2">
             Somethign
         </div>
     </div>
-</div>
 @endsection

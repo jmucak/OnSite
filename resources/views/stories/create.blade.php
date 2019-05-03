@@ -12,12 +12,12 @@
                     <form action="{{ route('stories.store') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="title">Title</label>
+                            <label for="title">Title of Story</label>
                             <input type="text" class="form-control" id="title" name="title">
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Write some description of the Story</label>
                             <textarea class="form-control" id="description" name="description" rows="10" cols="80"></textarea>
                         </div>
 
