@@ -1,0 +1,25 @@
+.onsite-navbar {
+    background-color: $primary;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    & .navbar-brand {
+        color: #fff!important;
+    }
+
+    & .onsite-link {
+        width: 5rem;
+
+        & a{
+            color: #fff;
+            text-decoration: none;
+        }
+
+        & a:active {
+            text-decoration: none;
+        }
+    }
+
+    & .dropdown-toggle::after {
+        vertical-align: 0.435rem;
+    }
+}

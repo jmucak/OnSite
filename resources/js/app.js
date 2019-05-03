@@ -23,6 +23,7 @@ window.Vue = require('vue');
 
 Vue.use(VueResource)
 Vue.component('friend', require('./components/Friend.vue').default);
+Vue.component('feed', require('./components/Feed.vue').default);
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
 

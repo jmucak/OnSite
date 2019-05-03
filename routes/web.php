@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // Users
 Route::resource('users', 'UsersController');
@@ -41,3 +41,6 @@ Route::delete('/stories/chapter/{id}', 'ChapterController@destroy')->name('chapt
 Route::get('/check_relationship_status/{id}', 'FriendshipController@check')->name('check');
 Route::get('/add_friend/{id}', 'FriendshipController@add_friend')->name('add_friend');
 Route::get('/accept_friend/{id}', 'FriendshipController@accept_friend')->name('accept_friend');
+
+// feed
+Route::get('/feed', 'FeedsController@feed')->name('feed');

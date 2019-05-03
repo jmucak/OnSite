@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Story extends Model
 {
+    public $with = ['user'];
+    
     protected $fillable = ['title', 'description', 'slug', 'user_id'];
     
     public function user() {
