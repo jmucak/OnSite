@@ -22,4 +22,8 @@ class Story extends Model
     public function chapters() {
         return $this->hasMany(Chapter::class);
     }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class);
+    }
 }

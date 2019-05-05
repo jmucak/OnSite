@@ -21,6 +21,20 @@
                             <textarea class="form-control" id="description" name="description" rows="10" cols="80"></textarea>
                         </div>
 
+                        @isset($categories)
+                            <div class="radio">
+                                <label for="radio">Categories:</label>
+                                <div class="radio">
+                                    @foreach ($categories as $category)
+                                        <label>
+                                            <input type="radio" name="category" value="{{ $category->id }}">
+                                            {{ $category->name }}
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endisset
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>
                         </div>

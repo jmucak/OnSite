@@ -45,3 +45,6 @@ Route::get('/accept_friend/{id}', 'FriendshipController@accept_friend')->name('a
 
 // feed
 Route::get('/feed', 'FeedsController@feed')->name('feed');
+
+//Categories
+Route::get('/stories/categories/{category}', 'CategoryController@index')->name('categories');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Story;
 use App\Helpers\Slug;
 use Illuminate\Http\Request;
+use App\Category;
 
 class StoryController extends Controller
 {
@@ -19,6 +20,7 @@ class StoryController extends Controller
     public function index()
     {
         $stories = Story::where('user_id', auth()->id())->get();
+        
         //dd($stories);
 
         return view('stories.index', compact('stories'));
@@ -31,7 +33,9 @@ class StoryController extends Controller
      */
     public function create()
     {
-        return view('stories.create');
+        $categories = Category::all();
+
+        return view('stories.create', compact('categories'));
     }
 
     /**
@@ -49,12 +53,14 @@ class StoryController extends Controller
 
         $slug = new Slug();
 
-        Story::create([
+        $story = Story::create([
             'title' => request('title'),
             'description' => request('description'),
             'slug' => $slug->createSlug(request('title')),
             'user_id' => auth()->id()
         ]);
+
+        $story->categories()->attach(request('category'));
 
         return redirect()->route('stories.index');
     }

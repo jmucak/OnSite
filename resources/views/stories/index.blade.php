@@ -10,6 +10,9 @@
                     <div class="card-body">
                         @foreach($stories as $story)
                             <h2><a href="{{ route('stories.show', ['slug' => $story->slug]) }}">{{ $story->title }}</a></h2>
+                            @foreach ($story->categories as $story_category)
+                                <a href="{{ route('categories', $story_category) }}"><span class="badge badge-info">{{ $story_category->name }}</span></a>
+                            @endforeach
                             <p>{{ $story->description }}</p>
                             <form action="{{ route('stories.destroy', $story->slug) }}" method="POST">
                                 {{ method_field('DELETE') }}
