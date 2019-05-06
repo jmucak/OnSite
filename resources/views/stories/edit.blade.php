@@ -34,12 +34,29 @@
                         </div>
                     @endisset
 
+                    <label for="tags">Tags:</label>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTag" style="float: right">
+                    Add New Tag
+                    </button>
+                    <br/>
+                    <div class="d-block my-3">
+                            @foreach($tags as $tag)
+                            <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" value="{{ $tag->id }}" name="tags[]" class="overflow-control-input" {{ $tag->stories->contains($story->id) ? 'checked=checked' : ''}}>
+                                <span class="overflow-control-indicator"></span>
+                                <span class="overflow-control-description">{{ $tag->name }}</span>
+                            </label>
+                            @endforeach
+                    </div>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         <a href="{{ route('stories.index') }}" class="btn btn-info" role="button">Get back</a>
                     </div>
                 </form>
             </div>
+            @include('inc.modal')
         </div>
     </div>
 @endsection

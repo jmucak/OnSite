@@ -6,6 +6,7 @@ use App\Story;
 use App\Helpers\Slug;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Tag;
 
 class StoryController extends Controller
 {
@@ -34,8 +35,9 @@ class StoryController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('stories.create', compact('categories'));
+        return view('stories.create', compact('categories', 'tags'));
     }
 
     /**
@@ -62,6 +64,9 @@ class StoryController extends Controller
         ]);
 
         $story->categories()->attach(request('category'));
+
+        $tags = request('tags');
+        $story->tags()->attach($tags);
 
         return redirect()->route('stories.index')->with('success', 'Story has been created');
     }
@@ -95,8 +100,9 @@ class StoryController extends Controller
         
         $story = Story::where('slug', $slug)->get()->first();
         $categories = Category::all();
+        $tags = Tag::all();
    
-        return view('stories.edit', compact('story', 'categories'));
+        return view('stories.edit', compact('story', 'categories', 'tags'));
     }
 
     /**
@@ -119,6 +125,7 @@ class StoryController extends Controller
         $story->save();
 
         $story->categories()->sync(request('category'));
+        $story->tags()->sync(request('tags'));
 
         return redirect()->route('stories.index')->with('succss', 'Story has been updated');
        

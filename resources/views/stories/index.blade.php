@@ -13,6 +13,14 @@
                             @foreach ($story->categories as $story_category)
                                 <a href="{{ route('categories', $story_category) }}"><span class="badge badge-info">{{ $story_category->name }}</span></a>
                             @endforeach
+                            @if (count($story->tags)>0)
+                                <p>
+                                    <i class="fa fa-tags"></i>Tags:
+                                    @foreach ($story->tags as $tag)
+                                        <span class="badge badge-info">{{ $tag->name }}</span>
+                                    @endforeach
+                                </p>
+                            @endif
                             <p>{{ $story->description }}</p>
                             <form action="{{ route('stories.destroy', $story->slug) }}" method="POST">
                                 {{ method_field('DELETE') }}

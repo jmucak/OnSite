@@ -54,3 +54,6 @@ Route::get('/stories/categories/{category}', 'CategoryController@index')->name('
 
 // Comments
 Route::post('/stories/{id}/comment', 'CommentController@store')->name('stories.comment');
+
+// Tags
+Route::post('/tags', 'TagController@store')->name('tags.store');

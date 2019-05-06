@@ -35,6 +35,21 @@
                             </div>
                         @endisset
 
+                        <label for="tags">Tags:</label><br/>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTag" style="float: right">
+                    Add New Tag
+                    </button>
+                    <div class="d-block my-3">
+                         @foreach($tags as $tag)
+                         <label class="custom-control overflow-checkbox">
+                              <input type="checkbox" value="{{ $tag->id }}" name="tags[]" class="overflow-control-input">
+                              <span class="overflow-control-indicator"></span>
+                              <span class="overflow-control-description">{{ $tag->name }}</span>
+                         </label>
+                         @endforeach
+                    </div>
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>
                         </div>
@@ -42,6 +57,7 @@
                 </div>
             </div>
         </div>
+        @include('inc.modal')
     </div>
 </div>
 @endsection
