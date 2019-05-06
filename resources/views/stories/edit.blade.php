@@ -20,6 +20,20 @@
                         <textarea name="description" id="description" cols="70" rows="10" class="form-control">{{ $story->description }}</textarea>
                     </div>
 
+                    @isset($categories)
+                        <div class="radio">
+                            <label for="radio">Categories:</label>
+                            <div class="radio">
+                                @foreach ($categories as $category)
+                                    <label>
+                                        <input type="radio" name="category" value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </label>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endisset
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         <a href="{{ route('stories.index') }}" class="btn btn-info" role="button">Get back</a>

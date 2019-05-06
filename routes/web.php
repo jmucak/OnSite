@@ -31,6 +31,9 @@ Route::post('/profile/update/profile', 'ProfileController@update')->name('profil
 // Story
 Route::resource('stories', 'StoryController');
 
+Route::get('/check_publish_status/{id}', 'StoryController@check')->name('stories.check');
+Route::get('/stories/publish/{id}', 'StoryController@publish')->name('stories.publish');
+
 // Chapter
 Route::get('/stories/{slug}/create/chapter', 'ChapterController@create')->name('chapter.create');
 Route::post('/stories/{slug}/chapter/{id}', 'ChapterController@store')->name('chapter.store');

@@ -93,8 +93,9 @@ class StoryController extends Controller
     {
         
         $story = Story::where('slug', $slug)->get()->first();
+        $categories = Category::all();
    
-        return view('stories.edit', compact('story'));
+        return view('stories.edit', compact('story', 'categories'));
     }
 
     /**
@@ -116,6 +117,8 @@ class StoryController extends Controller
 
         $story->save();
 
+        $story->categories()->sync(request('category'));
+
         return redirect()->route('stories.index');
        
     }
@@ -134,6 +137,30 @@ class StoryController extends Controller
             $chapter->delete();
         }
         $story->delete();
+
+        return redirect()->route('stories.index');
+    }
+
+    public function check($id) {
+        $story = Story::find($id);
+
+        if($story->published == 1){
+            return ['published' => true];
+        } 
+
+        return ['published' => false];
+    }
+
+    public function publish($id){
+        $story = Story::find($id);
+        
+        if($story->published == 1) {
+            $story->published = 0;
+        } else {
+            $story->published = 1;
+        }
+
+        $story->save();
 
         return redirect()->route('stories.index');
     }
