@@ -54952,7 +54952,10 @@ var render = function() {
           },
           [_vm._v("Publish")]
         )
-      : _c(
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.status == true
+      ? _c(
           "button",
           {
             staticClass: "btn btn-sm btn-info",
@@ -54960,6 +54963,7 @@ var render = function() {
           },
           [_vm._v("Unpublish")]
         )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -69007,8 +69011,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\OnSite\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\OnSite\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Josip\Desktop\Workspace\OnSite\OnSite\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Josip\Desktop\Workspace\OnSite\OnSite\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

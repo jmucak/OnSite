@@ -1,7 +1,7 @@
 <template>
     <div class="d-inline">
         <button class="btn btn-sm btn-success" v-if="status == false" @click="publishStory">Publish</button>
-        <button class="btn btn-sm btn-info" v-else @click="publishStory">Unpublish</button>
+        <button class="btn btn-sm btn-info" v-if="status == true" @click="publishStory">Unpublish</button>
     </div>
 </template>
 

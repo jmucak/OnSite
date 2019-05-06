@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,6 +23,7 @@
 <body>
     <div id="app">
         @include('layouts.navbar')
+        @include('inc.messages')
 
         <main class="py-4">
             @yield('content')

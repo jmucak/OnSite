@@ -54,7 +54,7 @@ class ChapterController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return redirect()->route('stories.show', $slug);
+        return redirect()->route('stories.show', $slug)->with('success', 'New chapter created!');
     }
 
     /**
@@ -97,7 +97,7 @@ class ChapterController extends Controller
 
         $chapter->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Chapter successfully updated!');
 
     }
 

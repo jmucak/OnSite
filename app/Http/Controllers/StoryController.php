@@ -48,7 +48,8 @@ class StoryController extends Controller
     {
         request()->validate([
             'title' => 'required|min:3|max:100',
-            'description' => 'required|min:3'
+            'description' => 'required|min:3',
+            'category' => 'required'
         ]);
 
         $slug = new Slug();
@@ -62,7 +63,7 @@ class StoryController extends Controller
 
         $story->categories()->attach(request('category'));
 
-        return redirect()->route('stories.index');
+        return redirect()->route('stories.index')->with('success', 'Story has been created');
     }
 
     /**
@@ -119,7 +120,7 @@ class StoryController extends Controller
 
         $story->categories()->sync(request('category'));
 
-        return redirect()->route('stories.index');
+        return redirect()->route('stories.index')->with('succss', 'Story has been updated');
        
     }
 
@@ -138,7 +139,7 @@ class StoryController extends Controller
         }
         $story->delete();
 
-        return redirect()->route('stories.index');
+        return redirect()->route('stories.index')->with('success', 'Story successfully deleted!');
     }
 
     public function check($id) {

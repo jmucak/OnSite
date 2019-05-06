@@ -70,7 +70,7 @@ class UsersController extends Controller
         $user->save();
         $user->roles()->attach(Role::where('role', 'user')->first());
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('User created successfully!');
     }
 
     /**
@@ -117,7 +117,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User successfully updated!');
     }
 
     /**
@@ -133,6 +133,6 @@ class UsersController extends Controller
         $user->roles()->detach(Role::where('role', 'user')->first());
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully!');
     }
 }
