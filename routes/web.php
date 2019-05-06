@@ -51,3 +51,6 @@ Route::get('/feed', 'FeedsController@feed')->name('feed');
 
 //Categories
 Route::get('/stories/categories/{category}', 'CategoryController@index')->name('categories');
+
+// Comments
+Route::post('/stories/{id}/comment', 'CommentController@store')->name('stories.comment');

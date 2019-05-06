@@ -20,6 +20,45 @@
     <hr>
     <div class="row">
         <div class="col-10 offset-1">
+            <div class="card">
+                <div class="card-block">
+                    <form action="{{ route('stories.comment', $story->id) }}" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <textarea name="comment" id="comment" placeholder="Type your comment..." class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Add Comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (count($story->comments))
+        <hr>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <div class="comments">
+                    <h3>Comments: </h3>
+                    <ul>
+                        @foreach ($story->comments as $comment)
+                            <li class="list-group-item">
+                                <b> {{ $comment->user->name }} </b>
+                                <i> {{ $comment->created_at->diffForHumans() }} </i>&nbsp;
+                                {{ $comment->comment }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endif
+    <hr>
+    <div class="row">
+        <div class="col-10 offset-1">
             
             @if(count($story->chapters))
                 <hr/>
