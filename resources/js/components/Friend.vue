@@ -41,10 +41,6 @@
                     if(res.body == 1) {
                         this.status = 'waiting';
 
-                        $(document).ready(function() {
-                            toastr.success('Friend request sent');
-                        });
-
                         this.loading = false;
                     }
                 })
@@ -57,10 +53,6 @@
 
                     if(res.body == 1) {
                         this.status = 'friends';
-
-                        $(document).ready(function() {
-                            toastr.success('You are now friends');
-                        });
 
                         this.loading = false;
                     }

@@ -1862,9 +1862,6 @@ __webpack_require__.r(__webpack_exports__);
         //console.log(res);
         if (res.body == 1) {
           _this2.status = 'waiting';
-          $(document).ready(function () {
-            toastr.success('Friend request sent');
-          });
           _this2.loading = false;
         }
       });
@@ -1877,9 +1874,6 @@ __webpack_require__.r(__webpack_exports__);
         //console.log(res);
         if (res.body == 1) {
           _this3.status = 'friends';
-          $(document).ready(function () {
-            toastr.success('You are now friends');
-          });
           _this3.loading = false;
         }
       });
