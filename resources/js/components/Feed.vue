@@ -1,14 +1,20 @@
 <template>
 <div>
-    <div class="card" v-for="feed in feeds" :key="feed.id">
-        <div class="card-header">
-            <img :src="feed.user.avatar" width="30px" height="30px">  {{ feed.user.name }}
-
-            <span> {{ feed.title }} </span>
-            <span class="text-right"> {{ feed.created_at | moment }} </span>
+    <div class="feed" v-for="feed in feeds" :key="feed.id">
+        <div class="feed__header">
+            <figure class="feed__header--avatar">
+                <img :src="feed.user.avatar" width="50px" height="50px">
+                <span class="feed__header--date"> 
+                    Published by {{ feed.user.name }} on {{ feed.created_at | moment }} 
+                </span>
+            </figure>
         </div>
-        <div class="card-body">
-            {{ feed.description }}
+        <hr>
+        <div class="feed__body">
+            <a :href="'/stories/' + feed.slug"><h4>{{ feed.title }}</h4></a>
+            <p>
+                {{ feed.description }}
+            </p>
         </div>
     </div>
 </div>
@@ -39,7 +45,7 @@ export default {
     },
     filters: {
         moment: function(date) {
-            return moment(date).fromNow();
+            return moment(date).format("MMMM Do YYYY");
         }
     }
 }

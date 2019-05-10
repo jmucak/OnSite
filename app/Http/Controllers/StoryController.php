@@ -81,7 +81,6 @@ class StoryController extends Controller
     {
 
         $story = Story::where([
-            'user_id' => auth()->id(),
             'slug' => $slug
         ])->get()->first();
 

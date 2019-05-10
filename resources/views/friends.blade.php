@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<section class="py-4">
     <div class="row">
         <div class="col-10 offset-1">
             <div class="card">
@@ -22,4 +23,5 @@
             </div>
         </div>
     </div>
+</section>
 @endsection

@@ -1781,6 +1781,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -1805,7 +1811,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   filters: {
     moment: function moment(date) {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).fromNow();
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("MMMM Do YYYY");
     }
   }
 });
@@ -54837,21 +54843,39 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.feeds, function(feed) {
-      return _c("div", { key: feed.id, staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("img", {
-            attrs: { src: feed.user.avatar, width: "30px", height: "30px" }
-          }),
-          _vm._v("  " + _vm._s(feed.user.name) + "\r\n\r\n            "),
-          _c("span", [_vm._v(" " + _vm._s(feed.title) + " ")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-right" }, [
-            _vm._v(" " + _vm._s(_vm._f("moment")(feed.created_at)) + " ")
+      return _c("div", { key: feed.id, staticClass: "feed" }, [
+        _c("div", { staticClass: "feed__header" }, [
+          _c("figure", { staticClass: "feed__header--avatar" }, [
+            _c("img", {
+              attrs: { src: feed.user.avatar, width: "50px", height: "50px" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "feed__header--date" }, [
+              _vm._v(
+                " \r\n                    Published by " +
+                  _vm._s(feed.user.name) +
+                  " on " +
+                  _vm._s(_vm._f("moment")(feed.created_at)) +
+                  " \r\n                "
+              )
+            ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _vm._v("\r\n            " + _vm._s(feed.description) + "\r\n        ")
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "feed__body" }, [
+          _c("a", { attrs: { href: "/stories/" + feed.slug } }, [
+            _c("h4", [_vm._v(_vm._s(feed.title))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "\r\n                " +
+                _vm._s(feed.description) +
+                "\r\n            "
+            )
+          ])
         ])
       ])
     }),
