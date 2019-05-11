@@ -15,6 +15,7 @@ class CategoryController extends Controller
     public function index(Category $category)
     {
         $all_stories = $category->stories;
+        $stories = [];
 
         foreach ($all_stories as $story) {
             if($story['published']){
