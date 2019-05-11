@@ -44,9 +44,9 @@
                     
                 @else
                     <li class="nav-item onsite-link">
-                        <a href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">
-                            <img src="{{ Auth::user()->avatar }}" width="30px" height="30px" alt="{{ Auth::user()->name }}">
-                            {{ Auth::user()->name }} 
+                        <a href="{{ route('profile', ['slug' => auth()->user()->slug ]) }}">
+                            <img src="{{ auth()->user()->avatar }}" width="30px" height="30px" alt="{{ auth()->user()->name }}">
+                            {{ auth()->user()->name }} 
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -56,7 +56,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @auth
-                                <a class="dropdown-item" href="{{ route('profile', ['slug' => Auth::user()->slug ]) }}">My Profile</a>
+                                <a class="dropdown-item" href="{{ route('profile', ['slug' => auth()->user()->slug ]) }}">My Profile</a>
                                 <a href="{{ route('stories.index') }}" class="dropdown-item">Stories</a>
                                 <a href="{{ route('friends') }}" class="dropdown-item">Friends</a>
                             @endauth

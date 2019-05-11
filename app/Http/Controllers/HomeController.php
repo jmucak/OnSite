@@ -8,16 +8,7 @@ use App\Story;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    
     /**
      * Show the application dashboard.
      *
@@ -27,11 +18,15 @@ class HomeController extends Controller
     {
         $stories = Story::where('user_id', auth()->id())->get();
 
-        return view('home', compact('stories'));
+        if(auth()->user()) {
+            return view('home', compact('stories'));
+        } 
+
+        return view('welcome');
     }
 
     public function friends() {
-        $friends = Auth::user()->friends();
+        $friends = auth()->user()->friends();
 
         return view('friends', compact('friends'));
     }

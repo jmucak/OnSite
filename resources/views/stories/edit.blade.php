@@ -21,16 +21,17 @@
                     </div>
 
                     @isset($categories)
-                        <div class="radio">
-                            <label for="radio">Categories:</label>
-                            <div class="radio">
-                                @foreach ($categories as $category)
-                                    <label>
-                                        <input type="radio" name="category" value="{{ $category->id }}">
-                                        {{ $category->name }}
-                                    </label>
-                                @endforeach
+                        <div class="category">
+                            <h4>Categories</h4>
+                            @foreach ($categories as $key => $category)
+                            <div class="form__radio-group">
+                                <input type="radio" name="category" id="category{{$key}}" value="{{ $category->id }}" class="form__radio-input">
+                                <label for="category{{$key}}" class="form__radio-label">
+                                    <span class="form__radio-button"></span>
+                                    {{ $category->name }}
+                                </label>
                             </div>
+                            @endforeach
                         </div>
                     @endisset
 
@@ -42,7 +43,7 @@
                     <br/>
                     <div class="d-block my-3">
                             @foreach($tags as $tag)
-                            <label class="custom-control overflow-checkbox">
+                            <label class="overflow__checkbox">
                                 <input type="checkbox" value="{{ $tag->id }}" name="tags[]" class="overflow-control-input" {{ $tag->stories->contains($story->id) ? 'checked=checked' : ''}}>
                                 <span class="overflow-control-indicator"></span>
                                 <span class="overflow-control-description">{{ $tag->name }}</span>

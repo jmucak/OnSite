@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if ($story->user_id == Auth::user()->id)
+@if ($story->user_id == auth()->user()->id)
 <div class="row">
     <div class="col-10 offset-1">
         <div class="card">

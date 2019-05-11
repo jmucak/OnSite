@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <p> {{ $story->description }} </p>
                     <hr>
-                    @if($story->user_id == Auth::user()->id)
+                    @if($story->user_id == auth()->user()->id)
                     <a href="{{ route('stories.edit', $story->slug) }}" class="btn btn-sm btn-warning">Edit Story details</a>
                     <a href="{{ route('chapter.create', $story->slug) }}" class="btn btn-sm btn-primary">Add Some chapters</a>
                     <publish :story_id="{{ $story->id }}"></publish>
