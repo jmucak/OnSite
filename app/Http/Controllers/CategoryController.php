@@ -24,6 +24,4 @@ class CategoryController extends Controller
 
         return view('stories.index', compact('stories'));
     }
-
-    
 }

@@ -171,4 +171,12 @@ class StoryController extends Controller
 
         return redirect()->route('stories.index');
     }
+
+    public function all(Category $category) {
+        
+        $stories = Story::all();
+        $categories = Category::all();
+
+        return view('explore', compact('categories', 'stories'));
+    }
 }

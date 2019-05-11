@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container py-5">
     <div class="row">
         <div class="col-10 offset-1">
             <div class="card">
@@ -36,11 +36,12 @@
                             </div>
                         @endisset
 
-                        <label for="tags">Tags:</label><br/>
+                    <br>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTag" style="float: right">
                     Add New Tag
                     </button>
+                    <h4>Tags</h4>
                     <div class="d-block my-3">
                          @foreach($tags as $tag)
                          <label class="overflow__checkbox">

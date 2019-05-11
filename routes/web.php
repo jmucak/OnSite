@@ -30,6 +30,8 @@ Route::resource('stories', 'StoryController');
 Route::get('/check_publish_status/{id}', 'StoryController@check')->name('stories.check');
 Route::get('/stories/publish/{id}', 'StoryController@publish')->name('stories.publish');
 
+Route::get('/explore', 'StoryController@all')->name('explore');
+
 // Chapter
 Route::get('/stories/{slug}/create/chapter', 'ChapterController@create')->name('chapter.create');
 Route::post('/stories/{slug}/chapter/{id}', 'ChapterController@store')->name('chapter.store');
@@ -46,7 +48,7 @@ Route::get('/accept_friend/{id}', 'FriendshipController@accept_friend')->name('a
 Route::get('/feed', 'FeedsController@feed')->name('feed');
 
 //Categories
-Route::get('/stories/categories/{category}', 'CategoryController@index')->name('categories');
+Route::get('/categories/{category}', 'CategoryController@index')->name('categories');
 
 // Comments
 Route::post('/stories/{id}/comment', 'CommentController@store')->name('stories.comment');

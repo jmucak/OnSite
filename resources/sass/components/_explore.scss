@@ -1,0 +1,32 @@
+.section-explore {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($primary, 0.8),
+        rgba($primary-light, 0.8)),
+        url(../images/cinema-popcorn.jpg);
+        background-size: cover;
+        height: 100vh;
+        padding-top: 5rem;
+    
+    & h4 {
+        color: #fff;
+    }
+}
+.category-box {
+    background-color: rgba(#fff, .6);
+    font-size: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1.5rem 4rem rgba(#000, .15);
+    transition: transform .3s;
+
+    &:hover {
+        transform: translateY(-1rem) scale(1.03);
+        cursor: pointer;
+    }
+
+    &:active {
+        transform: translateY(1rem) scale(1.03);
+    }
+}

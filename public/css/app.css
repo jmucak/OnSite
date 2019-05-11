@@ -259,6 +259,40 @@
   opacity: 1;
 }
 
+.section-explore {
+  background-image: linear-gradient(to right bottom, rgba(0, 128, 0, 0.8), rgba(57, 172, 57, 0.8)), url(/images/cinema-popcorn.jpg?19845b66db3f1c5940d002e356685b85);
+  background-size: cover;
+  height: 100vh;
+  padding-top: 5rem;
+}
+
+.section-explore h4 {
+  color: #fff;
+}
+
+.category-box {
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.category-box:hover {
+  -webkit-transform: translateY(-1rem) scale(1.03);
+          transform: translateY(-1rem) scale(1.03);
+  cursor: pointer;
+}
+
+.category-box:active {
+  -webkit-transform: translateY(1rem) scale(1.03);
+          transform: translateY(1rem) scale(1.03);
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10919,10 +10953,6 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-}
-
-.card {
-  margin-right: 1rem;
 }
 
 .carousel-control-next,

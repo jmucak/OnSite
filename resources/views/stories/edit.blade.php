@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="col-10 offset-1">
+    <div class="col-10 offset-1 py-5">
         <div class="card">
             <div class="card-header">
                 <h3>Update Story</h3>
@@ -23,10 +23,10 @@
                     @isset($categories)
                         <div class="category">
                             <h4>Categories</h4>
-                            @foreach ($categories as $key => $category)
+                            @foreach ($categories as $category)
                             <div class="form__radio-group">
-                                <input type="radio" name="category" id="category{{$key}}" value="{{ $category->id }}" class="form__radio-input">
-                                <label for="category{{$key}}" class="form__radio-label">
+                                <input type="radio" name="category" id="category{{ $category->id }}" value="{{ $category->id }}" {{ $category->stories->contains($story->id) ? 'checked=checked' : ''}} class="form__radio-input">
+                                <label for="category{{ $category->id }}" class="form__radio-label">
                                     <span class="form__radio-button"></span>
                                     {{ $category->name }}
                                 </label>
@@ -34,13 +34,13 @@
                             @endforeach
                         </div>
                     @endisset
+                    <br>
 
-                    <label for="tags">Tags:</label>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTag" style="float: right">
                     Add New Tag
                     </button>
-                    <br/>
+                    <h4>Tags</h4>
                     <div class="d-block my-3">
                             @foreach($tags as $tag)
                             <label class="overflow__checkbox">
