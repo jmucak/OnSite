@@ -1,0 +1,74 @@
+.welcome {
+    height: 100vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($primary, 0.8),
+        rgba($primary-light, 0.8)),
+        url(../images/cinema-tape.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
+.heading-primary {
+    color: #fff;
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+    
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        animation: moveInRight 1s ease-out;
+
+    }
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

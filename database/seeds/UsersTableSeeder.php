@@ -38,7 +38,8 @@ class UsersTableSeeder extends Seeder
         $profile->lastname = $admin->name;
         $profile->save();
 
-        for($i=2; $i<12; $i++){
+
+        for($i=1; $i<11; $i++){
             // Create 10 users
             ${"user$i"} = new User();
             ${"user$i"}->gender = rand(0,1);
@@ -59,7 +60,7 @@ class UsersTableSeeder extends Seeder
             ${"user$i"}->roles()->attach(2);
 
             ${"profile$i"} = new Profile();
-            ${"profile$i"}->user_id = $i;
+            ${"profile$i"}->user_id = $i+1;
             ${"profile$i"}->firstname = ${"user$i"}->name;
             ${"profile$i"}->lastname = ${"user$i"}->name;
 

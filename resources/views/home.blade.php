@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(auth()->user()->isAdmin())
-        <a href="{{ route('users.index') }}" class="btn btn-warning">Get me users</a>
-
-        This is admin dashboard
-
-    @else
     <section class="container py-4">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-lg-8">
@@ -60,7 +54,11 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('stories.create') }}" class="btn btn-success" role="button">Create New Story</a>
+                        @if(auth()->user()->isAdmin())
+                        <a href="{{ route('users.index') }}" class="btn btn-warning">Get me users</a>
+                    @endif
                     </div>
+                    
 
                     <h4 class="text-center">Bookmarks</h4>
                     <ul class="list-group">
@@ -74,6 +72,4 @@
             </div>
         </div>
     </section>
-
-    @endif
 @endsection

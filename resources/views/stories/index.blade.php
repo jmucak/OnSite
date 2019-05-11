@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container">
         <div class="row">
             <div class="col-10 offset-1">
                 <a href="{{ route('stories.create') }}" class="btn btn-success" role="button">Create New Story</a>
@@ -35,5 +36,5 @@
                 @endforeach
             </div>
         </div>
-
+    </div>
 @endsection

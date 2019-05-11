@@ -105,6 +105,6 @@ class ProfileController extends Controller
         }
 
         // redirect back
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your profile has been updated!');
     }
 }

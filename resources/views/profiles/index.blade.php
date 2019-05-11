@@ -12,21 +12,15 @@
     </div>
     
     <div class="onsite-profile__info">
-        @if($user->profile->firstname && !$user->profile->lastname)
-            <h4 class="card-title">{{ $user->profile->firstname }}</h4>
-        @elseif($user->profile->firstname && $user->profile->lastname)
-            <h4 class="card-title">{{ $user->profile->firstname }} {{ $user->profile->lastname }}</h4>
-        @else
-            <h4 class="card-title">{{ $user->name }}</h4>
-        @endif
-       
+        <h4 class="card-title">{{ $user->name }}</h4>
+
         @if(!empty($user->profile->about))
-            <div class="onsite-profile__about">
+            <div class="row">
                 <br>
-                <div class="col-md-5">
+                <div class="col-10 offset-1">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title text-center">About me</h3>
+                            <h3 class="card-title">About me</h3>
                         </div>
     
                         <div class="card-body">
@@ -36,6 +30,8 @@
                 </div>
             </div>
         @endif
+
+        <br>
 
         @if(!$stories->isEmpty())
             <div class="row">
